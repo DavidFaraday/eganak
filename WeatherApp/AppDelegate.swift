@@ -7,39 +7,95 @@
 //
 
 import UIKit
+import CoreLocation
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
 
     var window: UIWindow?
 
+    var locationManager: CLLocationManager?
+    var coordinates: CLLocationCoordinate2D?
 
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+//        locationManagerStart()
+
         return true
     }
 
-    func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-    }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+//        locationMangerStop()
     }
 
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-    }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+//        locationManagerStart()
     }
 
-    func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
+
+//    //MARK: Location Manager
+//    func locationManagerStart() {
+//        if locationManager == nil {
+//            locationManager = CLLocationManager()
+//            locationManager!.delegate = self
+//            locationManager!.desiredAccuracy = kCLLocationAccuracyBest
+//            locationManager!.requestWhenInUseAuthorization()
+//        }
+//
+//        locationManager!.startMonitoringSignificantLocationChanges()
+//        print("starting")
+//
+//    }
+    
+//    func locationMangerStop() {
+//        if locationManager != nil {
+//            locationManager!.stopMonitoringSignificantLocationChanges()
+//        }
+//    }
+//
+//    //MARK: Location ManagerDelegate
+//    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+//        print("failed to get location")
+//    }
+//
+//    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+//
+//        switch status {
+//        case .notDetermined:
+//            manager.requestWhenInUseAuthorization()
+//            break
+//        case .authorizedWhenInUse:
+//            manager.startUpdatingLocation()
+//            break
+//        case .authorizedAlways:
+//            manager.startUpdatingLocation()
+//            break
+//        case .restricted:
+//            // restricted by e.g. parental controls. User can't enable Location Services
+//            break
+//        case .denied:
+//            locationManager = nil
+//            print("denied location")
+//            // user denied your app access to Location Services, but can grant access from Settings.app
+//            break
+//        }
+//    }
+//
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        print("local")
+//        coordinates = locations.last!.coordinate
+//
+//        if coordinates != nil {
+//            print("did set")
+//            LocationService.shared.latitude = coordinates!.latitude
+//            LocationService.shared.longitude = coordinates!.longitude
+//        }
+//    }
+    
 
 
 }
